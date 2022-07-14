@@ -16,7 +16,7 @@ const App: React.FunctionComponent = () => {
         <>
           <PropsContext.Provider value={{
             rtcProps: {
-              appId: '<Agora App ID>',
+              appId: '30a6bc89994d4222a71eba01c253cbc7',
               channel: 'test',
               token: null
             },
@@ -65,6 +65,7 @@ const CombineGridToCanvas = (props: { isEnableFx: boolean }) => {
 
   useEffect(() => {
     if (isEnableFx) {
+      // console.log('!!UE')
       let videos = Array.from(document.getElementsByTagName('video')) //mediaStore[users[0].uid].videoTrack;
       videos = videos.filter(v => !v.id.startsWith('trackVideo'))
       let canvas = document.getElementById('display')! as HTMLCanvasElement;
@@ -92,7 +93,7 @@ const CombineGridToCanvas = (props: { isEnableFx: boolean }) => {
           const green = imageData.data[offset + 1]
           const blue = imageData.data[offset + 2]
 
-          if (green > 128 && green > red && green > blue) {
+          if (green > 66 && green > red && green > blue) {
             imageData.data[offset + 3] = 0
           }
         }
@@ -116,7 +117,7 @@ const CombineGridToCanvas = (props: { isEnableFx: boolean }) => {
         <canvas id='display' style={{ flex: 1, position: 'absolute', left: 0, bottom: 0, zIndex: 1 }} height={480} width={640}></canvas>
         : <p style={{ padding: 10 }}>enable virtual background to start</p>
       }
-      <video style={{ height: '82vh', position: 'absolute', bottom: 0 }} id="trackVideoMonkey" src="screen.webm" autoPlay={true} loop={true} />
+      <video style={{ height: '82vh', position: 'absolute', bottom: 0 }} id="trackVideoMonkey" src="video.mp4" autoPlay={true} loop={true} />
     </div>
   )
 }
