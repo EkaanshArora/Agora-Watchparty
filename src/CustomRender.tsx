@@ -41,7 +41,7 @@ const CombineGridToCanvas = () => {
         const green = imageData.data[offset + 1]
         const blue = imageData.data[offset + 2]
 
-        if (green > 66 && green > red && green > blue) {
+        if (green > 90 && green > red && green > blue) {
           imageData.data[offset + 3] = 0
         }
       }
@@ -63,7 +63,9 @@ const CombineGridToCanvas = () => {
         {users.map(u => {
           if (u.uid === 1) {
             if (mediaStore[1].videoTrack) return <AgoraVideoPlayer style={{ width: '100%', height: '100%', objectFit: 'cover' }} videoTrack={mediaStore[1].videoTrack} />
+            else return null
           }
+          else return null
         })}
       </div>
     </div>

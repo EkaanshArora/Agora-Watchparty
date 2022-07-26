@@ -1,10 +1,11 @@
 import React, { CSSProperties, useState } from 'react'
-import { PropsContext, GridVideo, LocalControls, RtcConfigure, TracksConfigure, RtmConfigure, RemoteMutePopUp, LocalUserContext } from 'agora-react-uikit'
+import { PropsContext, LocalControls, RtcConfigure, TracksConfigure, RtmConfigure, RemoteMutePopUp, LocalUserContext } from 'agora-react-uikit'
 import VirtualBackground from './VirtualBackground'
 import 'agora-react-uikit/dist/index.css'
 import AgoraRTC from 'agora-rtc-sdk-ng'
 import CloudPlayer from './CloudPlayer'
 import CombineGridToCanvas from './CustomRender'
+import GridVideo from './Grid'
 
 AgoraRTC.setLogLevel(3)
 const App: React.FunctionComponent = () => {
@@ -21,7 +22,6 @@ const App: React.FunctionComponent = () => {
               channel: 'test',
               token: null
             },
-            styleProps: { gridVideoContainer: { display: 'none' } },
             callbacks: {
               EndCall: () => setVideocall(false),
             }
@@ -30,10 +30,8 @@ const App: React.FunctionComponent = () => {
               <RtcConfigure>
                 <LocalUserContext>
                   <RtmConfigure>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                      <VirtualBackground />
-                      <CloudPlayer />
-                    </div>
+                    <VirtualBackground />
+                    <CloudPlayer />
                     <RemoteMutePopUp />
                     <GridVideo />
                     <CombineGridToCanvas />

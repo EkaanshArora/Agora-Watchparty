@@ -53,7 +53,7 @@ const CloudPlayer = () => {
         playVideo()
       }
     }}>
-      {isBtnDisabled ? 'Requesting...' : 'Stream Video from Cloud'}
+      {isBtnDisabled ? 'Playing...' : 'Stream Video from Cloud'}
     </div>
   </>
   )
