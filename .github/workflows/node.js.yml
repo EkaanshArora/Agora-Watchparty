@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pages: write
@@ -17,16 +21,15 @@ permissions:
 jobs:
   build:
 
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-        
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
       
     steps:
     - uses: actions/checkout@v3
